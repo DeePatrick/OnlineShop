@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="jumbotron">
+    <h2 class="page-title text-center">From the JManga Online Store Team</h2>
+    <article class="m-b-lg">
+        <h3 class="text-center">
+            JManga Online Store put the uptomost effort into bringing you Popular Japanese Graphic Novels(MANGA).
+            We have direct link to Most Authors and make available hard papaerback issues for your reading delight.
+            We Guarantee Prompt home delivery of Japanese Graphic Novels.
+
+        </h3>
+    </article>
+</div>
+
+
+<div class="panel-heading">
+    <br>
+    <hr>
+    <div class="container-fluid">
+        <div class="col-md-4 m-b-lg">
+            <div class="panel panel-default panel-profile m-b-o">
+                <div class="panel-heading" style="background-image: url('../Images/backgrounds/london2.jpg');"></div>
+                <div class="panel-body text-center">
+                    <img src="~/Images/author_profiles/Arakawa_Hiromu.jpg" class="panel-profile-img" width="100" height="100" />
+                    <h5 class="panel-title"><strong>Arakawa Hirom</strong></h5>
+                </div>
+                <p class="m-b">Creator of the Popular Manga and Anime<br /> "Full Metal Alchemist"</p>
+                <p><i class="fa fa-send"></i> @Html.ActionLink("Go to List", "List", "Product", null, new { @class = "btn btn-banner btn-sm m-b" })</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 m-b-lg">
+            <div class="panel panel-default panel-profile m-b-o">
+                <div class="panel-heading" style="background-image: url('../Images/backgrounds/london3.jpg');"></div>
+                <div class="panel-body text-center">
+                    <img src="~/Images/author_profiles/Mari-Okada_portrait.jpg" class="panel-profile-img" width="100" height="100" />
+                    <h5 class="panel-title">
+                        <strong>
+                            Mari Okada
+                        </strong>
+                    </h5>
+                </div>
+                <p class="m-b">Creator of "Mobile Suit Gundam: Iron-Blooded Orphans"</p>
+                <p><i class="fa fa-send"></i> @Html.ActionLink("Go to List", "List", "Product", null, new { @class = "btn btn-banner btn-sm m-b" })</p>
+            </div>
+        </div>
+        <div class="col-md-4 m-b-lg">
+            <div class="panel panel-default panel-profile m-b-o">
+                <div class="panel-heading" style="background-image: url('../Images/backgrounds/london9.jpg');"></div>
+                <div class="panel-body text-center">
+                    <img src="~/Images/author_profiles/Mitsuru_Adachi.jpg" class="panel-profile-img" width="100" height="100" />
+                    <h5 class="panel-title">
+                        <strong>Mitsuru Adachi</strong>
+                    </h5>
+                </div>
+                <p class="m-b">Creator of the Popular Manga and Anime<br /> "Touch"</p>
+                <p><i class="fa fa-send"></i> @Html.ActionLink("Go to List", "List", "Product", null, new { @class = "btn btn-banner btn-sm m-b" })</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>-->
+<!--PORTFOLIO END-->

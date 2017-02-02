@@ -1,0 +1,101 @@
+﻿@model IEnumerable<OnlineShop.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div>
+            All Mangas Available in Store
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Name</th>
+                <th class="text-right">Price</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-right">@item.ProductId</td>
+                    <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductId })</td>
+                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-center">
+                        @Html.Hidden("ProductID", item.ProductId)
+                        @Html.Hidden("ProductImage",item.BrandImage)
+                        <input type="submit" class="btn btn-default btn-xs" value="Delete" />
+                        <a href="#" class="js-delete-manga" data-manga-id="@item.ProductId">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add a New Manga", "AddProduct", null,
+       new { @class = "btn btn-default" })
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-manga").click(function (e) {
+                var link = $(e.target);
+
+                bootbox.dialog({
+                    message: "Are you sure you want to delete this manga?",
+                    title: "Confirm",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: "btn-danger",
+                            callback: function () {
+                                $.ajax({
+                                    url: "/admin/delete/" + link.attr("data-manga-id"),
+                                    method: "DELETE"
+                                })
+                                .done(function () {
+                                    link.parents("li").fadeOut(function () {
+                                        $(this).remove();
+                                    });
+                                })
+                                .fail(function () {
+                                    alert("Something failed!");
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+

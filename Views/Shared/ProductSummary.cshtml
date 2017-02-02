@@ -1,0 +1,21 @@
+﻿@model OnlineShop.Models.Product
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="label label-primary pull-right">@Model.Price.ToString("c")</span>
+    </h3>
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.ProductId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to cart" />
+        </div>
+    }
+    <div>
+        <span><img class="img-responsive" width="70" height="70" src="data:image;base64,@System.Convert.ToBase64String(Model.BrandImage)" /></span>
+    </div>
+    <span class="lead">@Model.Description</span>
+</div>
